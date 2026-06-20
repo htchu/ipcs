@@ -6,7 +6,7 @@ import { useState } from "react";
 const menuItems = [
   {
     label: "關於學程",
-    labelEn: "About",
+    labelEn: "About IPCS",
     href: "/about",
     children: [
       { label: "簡介", labelEn: "Introduction", href: "/about" },
@@ -65,9 +65,9 @@ const menuItems = [
     href: "/regulations",
   },
   {
-    label: "會議記錄",
-    labelEn: "Meeting Minutes",
-    href: "/minutes",
+    label: "資訊教育認證",
+    labelEn: "IEET CAC Accreditation",
+    href: "/accreditation",
   },
 ];
 
@@ -131,7 +131,12 @@ export default function Navbar() {
                   href={item.href}
                   className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md transition flex items-center gap-1"
                 >
-                  {item.label}
+                  <span>
+                    {item.label}
+                    <span className="block text-xs text-gray-400 leading-tight">
+                      {item.labelEn}
+                    </span>
+                  </span>
                   {item.children && (
                     <svg
                       className="w-3 h-3"
