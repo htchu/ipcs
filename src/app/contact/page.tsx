@@ -115,9 +115,9 @@ export default function ContactPage() {
         <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
           <h2 className="text-xl font-bold text-gray-800 flex items-center gap-3">
             <span className="text-2xl">📸</span>
-            IPCS 團隊
+            IPCS 學程歡迎你
           </h2>
-          <p className="text-sm text-gray-500 ml-11">IPCS Team</p>
+          <p className="text-sm text-gray-500 ml-11">Welcome to IPCS</p>
         </div>
         <div className="px-6 py-5">
           <Image
