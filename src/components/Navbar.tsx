@@ -65,6 +65,11 @@ const menuItems = [
     href: "/regulations",
   },
   {
+    label: "畢業專題",
+    labelEn: "Capstone Projects",
+    href: "/projects",
+  },
+  {
     label: "資訊教育認證",
     labelEn: "IEET CAC Accreditation",
     href: "/accreditation",

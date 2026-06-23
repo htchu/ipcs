@@ -67,6 +67,11 @@ const sections: SitemapSection[] = [
     href: "/regulations",
   },
   {
+    zh: "畢業專題",
+    en: "Capstone Projects",
+    href: "/projects",
+  },
+  {
     zh: "資訊教育認證",
     en: "IEET CAC Accreditation",
     href: "/accreditation",
