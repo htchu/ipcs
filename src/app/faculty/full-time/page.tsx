@@ -27,32 +27,6 @@ type Faculty = {
 
 const faculty: Faculty[] = [
   {
-    nameZh: "朱學亭",
-    nameEn: "Chu, Hsueh-Ting",
-    titleZh: "副教授兼學程主任",
-    titleEn: "Associate Professor & Program Director",
-    photo: "/images/faculty/chu-hsueh-ting.jpg",
-    deptZh: "國際資訊學士學位學程（IPCS）",
-    deptEn: "International Program in Computer Science",
-    education: [
-      {
-        zh: "國立清華大學 資訊工程學系 博士",
-        en: "Ph.D., Computer Science, National Tsing Hua University",
-      },
-    ],
-    expertise: [
-      { zh: "雲端計算", en: "Cloud Computing" },
-      { zh: "人工智慧", en: "Artificial Intelligence" },
-      { zh: "大數據分析", en: "Big Data Analytics" },
-      { zh: "智慧醫療", en: "Smart Healthcare" },
-      { zh: "數位學習", en: "Digital Learning" },
-      { zh: "生物資訊", en: "Bioinformatics" },
-    ],
-    email: "htchu2@pu.edu.tw",
-    phone: "04-2632-8001 ext. 18216",
-    website: "https://www.aiplab.tw/",
-  },
-  {
     nameZh: "方百立",
     nameEn: "Fong, Bai-Li",
     titleZh: "副教授",
