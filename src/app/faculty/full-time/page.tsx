@@ -75,7 +75,7 @@ const faculty: Faculty[] = [
     phone: "04-2632-8001 ext. 18217",
   },
   {
-    nameZh: "李官慶",
+    nameZh: "李冠憬",
     nameEn: "Li, Kuan-Ching",
     titleZh: "特聘教授",
     titleEn: "Distinguished Professor",
@@ -142,7 +142,7 @@ const faculty: Faculty[] = [
     phone: "04-2632-8001 ext. 19200 / 18301",
   },
   {
-    nameZh: "葉介珊",
+    nameZh: "葉介山",
     nameEn: "Yeh, Jieh-Shan",
     titleZh: "副教授兼電子計算機中心主任",
     titleEn: "Associate Professor & Director, Office of Information Technology",
@@ -163,6 +163,75 @@ const faculty: Faculty[] = [
     ],
     email: "jsyeh@pu.edu.tw",
     phone: "04-2632-8001 ext. 18113 / 11700",
+  },
+  {
+    nameZh: "楊孟蒨",
+    nameEn: "Yang, Meng-Chien",
+    titleZh: "教授",
+    titleEn: "Professor",
+    photo: "/images/faculty/yang-meng-chien.jpg",
+    deptZh: "資訊傳播工程學系（合聘）",
+    deptEn: "Dept. of Computer Science & Communication Engineering (Joint Appointment)",
+    education: [
+      {
+        zh: "美國雪城大學 資訊與電腦科學 博士",
+        en: "Ph.D., Information and Computer Science, Syracuse University, USA",
+      },
+    ],
+    expertise: [
+      { zh: "數位典藏", en: "Digital Archives" },
+      { zh: "系統分析", en: "Systems Analysis" },
+      { zh: "語意網", en: "Semantic Web" },
+      { zh: "台灣原住民語計算", en: "Taiwanese Indigenous Language Computing" },
+      { zh: "遊戲式學習", en: "Game-Based Learning" },
+    ],
+    email: "mcyang2@pu.edu.tw",
+    phone: "04-2632-8001 ext. 18303",
+  },
+  {
+    nameZh: "胡學誠",
+    nameEn: "Hu, Hsueh-Cheng",
+    titleZh: "副教授",
+    titleEn: "Associate Professor",
+    photo: null,
+    deptZh: "人工智慧應用學系（合聘）",
+    deptEn: "Dept. of Applied Artificial Intelligence (Joint Appointment)",
+    education: [
+      {
+        zh: "美國德州農工大學 計算機科學 博士",
+        en: "Ph.D., Computer Science, Texas A&M University, USA",
+      },
+    ],
+    expertise: [
+      { zh: "雲端運算", en: "Cloud Computing" },
+      { zh: "數位學習系統", en: "Digital Learning Systems" },
+      { zh: "Web 技術", en: "Web Technology" },
+      { zh: "電子商務", en: "E-Commerce" },
+    ],
+    email: "schu@pu.edu.tw",
+    phone: "04-2632-8001 ext. 18304",
+  },
+  {
+    nameZh: "余瑞琳",
+    nameEn: "Yu, Jui-Ling",
+    titleZh: "教授",
+    titleEn: "Professor",
+    photo: "/images/faculty/yu-jui-ling.jpg",
+    deptZh: "資料科學暨大數據分析與應用學系（合聘）",
+    deptEn: "Dept. of Data Science and Big Data Analytics (Joint Appointment)",
+    education: [
+      {
+        zh: "美國密西根州立大學 應用數學 博士",
+        en: "Ph.D., Applied Mathematics, Michigan State University, USA",
+      },
+    ],
+    expertise: [
+      { zh: "生物數學建模分析", en: "Biomathematical Modeling and Analysis" },
+      { zh: "人工智慧", en: "Artificial Intelligence" },
+      { zh: "數值分析", en: "Numerical Analysis" },
+    ],
+    email: "jlyu@pu.edu.tw",
+    phone: "04-2632-8001 ext. 18507",
   },
 ];
 
