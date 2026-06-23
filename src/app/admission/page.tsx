@@ -48,38 +48,6 @@ const pathways: {
     ],
   },
   {
-    id: "foundation",
-    icon: "📖",
-    zh: "國際專修部（華語先修）",
-    en: "International Foundation Program (Chinese Language Preparatory)",
-    descZh:
-      "依教育部「重點產業領域擴大招收僑生港澳學生及外國學生實施計畫」設立的華語先修管道。",
-    descEn:
-      "A Chinese language preparatory pathway established under the MOE's plan to expand recruitment of overseas Chinese, Hong Kong/Macau, and international students in key industry sectors.",
-    links: [
-      {
-        zh: "國際暨兩岸事務處 — 成員及業務（含 International Foundation Program 連結）",
-        en: "OIA — Staff & Services (incl. International Foundation Program link)",
-        href: "https://oia.pu.edu.tw/p/426-1048-7.php",
-      },
-      {
-        zh: "本處簡介（國際專修部組織定位）",
-        en: "About OIA (International Foundation Program organizational overview)",
-        href: "https://oia.pu.edu.tw/p/426-1048-6.php",
-      },
-      {
-        zh: "《靜宜大學國際專修部學生修業辦法》(PDF)",
-        en: "PU International Foundation Program Student Academic Regulations (PDF)",
-        href: "https://oia.pu.edu.tw/var/file/48/1048/img/324/654788790.pdf",
-      },
-      {
-        zh: "教育部母法 — 重點產業領域擴大招收僑港澳外國學生實施計畫",
-        en: "MOE Parent Regulation — Expanded Recruitment Plan for Key Industry Sectors",
-        href: "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL002309",
-      },
-    ],
-  },
-  {
     id: "exchange",
     icon: "🌍",
     zh: "交換生 / 雙聯學位",
