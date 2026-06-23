@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -108,6 +109,26 @@ export default function ContactPage() {
           </div>
         </section>
       </div>
+
+      {/* Team Photo */}
+      <section className="mt-10 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
+          <h2 className="text-xl font-bold text-gray-800 flex items-center gap-3">
+            <span className="text-2xl">📸</span>
+            IPCS 團隊
+          </h2>
+          <p className="text-sm text-gray-500 ml-11">IPCS Team</p>
+        </div>
+        <div className="px-6 py-5">
+          <Image
+            src="/images/IPCS_team.jpg"
+            alt="IPCS Team"
+            width={960}
+            height={640}
+            className="rounded-lg w-full h-auto"
+          />
+        </div>
+      </section>
     </div>
   );
 }
