@@ -21,16 +21,8 @@ const director = {
   website: "https://www.aiplab.tw/",
   education: [
     {
-      zh: "美國愛荷華大學 電機與計算機工程學系 博士",
-      en: "Ph.D., Electrical and Computer Engineering, University of Iowa, USA",
-    },
-    {
-      zh: "國立成功大學 資訊工程學系 碩士",
-      en: "M.S., Computer Science and Information Engineering, National Cheng Kung University",
-    },
-    {
-      zh: "靜宜大學 資訊管理學系 學士",
-      en: "B.S., Information Management, Providence University",
+      zh: "國立清華大學 資訊工程學系 博士",
+      en: "Ph.D., Computer Science, National Tsing Hua University",
     },
   ],
   expertise: [
