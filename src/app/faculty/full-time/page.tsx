@@ -193,7 +193,7 @@ const faculty: Faculty[] = [
     nameEn: "Hu, Hsueh-Cheng",
     titleZh: "副教授",
     titleEn: "Associate Professor",
-    photo: null,
+    photo: "/images/faculty/hu-hsueh-cheng.jpg",
     deptZh: "人工智慧應用學系（合聘）",
     deptEn: "Dept. of Applied Artificial Intelligence (Joint Appointment)",
     education: [
