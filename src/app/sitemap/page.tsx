@@ -1,11 +1,7 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+"use client";
 
-export const metadata: Metadata = {
-  title: "網站導覽 Sitemap | IPCS",
-  description:
-    "Sitemap of the International Program in Computer Science at Providence University.",
-};
+import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 /* ── data ── */
 
@@ -81,10 +77,17 @@ const sections: SitemapSection[] = [
 /* ── component ── */
 
 export default function SitemapPage() {
+  const { language } = useLanguage();
+  const t = (zh: string, en: string) => language === "en" ? en : zh;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-primary mb-2">網站導覽</h1>
-      <p className="text-lg text-gray-500 mb-10">Sitemap</p>
+      <h1 className="text-3xl font-bold text-primary mb-2">
+        {t("網站導覽", "Sitemap")}
+      </h1>
+      <p className="text-lg text-gray-500 mb-10">
+        {language === "en" ? "" : "Sitemap"}
+      </p>
 
       <section className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
         <div className="px-6 py-5">
@@ -95,8 +98,10 @@ export default function SitemapPage() {
                   href={s.href}
                   className="text-base font-medium text-primary hover:underline"
                 >
-                  {s.zh}
-                  <span className="text-sm text-gray-500 ml-2">{s.en}</span>
+                  {language === "en" ? s.en : s.zh}
+                  {language === "zh" && (
+                    <span className="text-sm text-gray-500 ml-2">{s.en}</span>
+                  )}
                 </Link>
 
                 {s.children && (
@@ -107,10 +112,12 @@ export default function SitemapPage() {
                           href={c.href}
                           className="text-sm text-primary hover:underline"
                         >
-                          {c.zh}
-                          <span className="text-xs text-gray-500 ml-2">
-                            {c.en}
-                          </span>
+                          {language === "en" ? c.en : c.zh}
+                          {language === "zh" && (
+                            <span className="text-xs text-gray-500 ml-2">
+                              {c.en}
+                            </span>
+                          )}
                         </Link>
                       </li>
                     ))}
