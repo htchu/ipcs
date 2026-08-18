@@ -52,10 +52,15 @@ const menuItems = [
       href: "/student-info/curriculum",
     },
     {
-      label: "資訊教育認證 (CAC)",
-      labelEn: "CAC Accreditation",
-      href: "/accreditation",
+      label: "IEET教育認證",
+      labelEn: "IEET Accreditation",
+      href: "/ieet-accreditation",
       children: [
+        {
+          label: "資訊教育認證 (CAC)",
+          labelEn: "CAC Accreditation",
+          href: "/ieet-cac",
+        },
         {
           label: "教育目標及核心能力",
           labelEn: "Educational Objectives",
