@@ -1,20 +1,24 @@
+"use client";
+
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
-export const metadata: Metadata = {
-  title: "聯絡我們 Contact | IPCS",
-  description:
-    "Contact information for the International Program in Computer Science at Providence University.",
-};
-
-/* ── component ── */
+/* Note: Metadata export is moved below after useLanguage hook */
 
 export default function ContactPage() {
+  const { language } = useLanguage();
+  const t = (zh: string, en: string) => language === "en" ? en : zh;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-primary mb-2">聯絡我們</h1>
-      <p className="text-lg text-gray-500 mb-10">Contact</p>
+      <h1 className="text-3xl font-bold text-primary mb-2">
+        {t("聯絡我們", "Contact Us")}
+      </h1>
+      <p className="text-lg text-gray-500 mb-10">
+        {language === "en" ? "Contact" : ""}
+      </p>
 
       <div className="space-y-10">
         {/* Staff */}
@@ -22,9 +26,11 @@ export default function ContactPage() {
           <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
             <h2 className="text-xl font-bold text-gray-800 flex items-center gap-3">
               <span className="text-2xl">👩‍💼</span>
-              學程辦公室
+              {language === "en" ? "Program Office" : "學程辦公室"}
             </h2>
-            <p className="text-sm text-gray-500 ml-11">Program Office</p>
+            <p className="text-sm text-gray-500 ml-11">
+              {language === "en" ? "" : "Program Office"}
+            </p>
           </div>
 
           <div className="px-6 py-5">
@@ -35,12 +41,18 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold text-gray-800">劉怡伶</h3>
-                <p className="text-sm text-gray-500">Liu, Yi-Ling</p>
-                <p className="text-sm font-medium text-primary mt-1">
-                  學程秘書
+                <h3 className="text-lg font-bold text-gray-800">
+                  {language === "en" ? "Yi-Ling Liu" : "劉怡伶"}
+                </h3>
+                <p className="text-sm text-gray-500">
+                  {language === "en" ? "" : "Liu, Yi-Ling"}
                 </p>
-                <p className="text-xs text-gray-500">Program Secretary</p>
+                <p className="text-sm font-medium text-primary mt-1">
+                  {language === "en" ? "Program Secretary" : "學程秘書"}
+                </p>
+                <p className="text-xs text-gray-500">
+                  {language === "en" ? "" : "Program Secretary"}
+                </p>
 
                 <ul className="text-sm text-gray-600 mt-3 space-y-1">
                   <li className="flex items-center gap-2">
@@ -67,29 +79,39 @@ export default function ContactPage() {
           <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
             <h2 className="text-xl font-bold text-gray-800 flex items-center gap-3">
               <span className="text-2xl">🏫</span>
-              學程資訊
+              {language === "en" ? "Program Information" : "學程資訊"}
             </h2>
-            <p className="text-sm text-gray-500 ml-11">Program Information</p>
+            <p className="text-sm text-gray-500 ml-11">
+              {language === "en" ? "" : "Program Information"}
+            </p>
           </div>
 
           <div className="px-6 py-5 space-y-3 text-sm text-gray-600">
             <div>
               <p className="font-medium text-gray-800">
-                國際資訊學士學位學程（IPCS）
+                {language === "en"
+                  ? "International Program in Computer Science (IPCS)"
+                  : "國際資訊學士學位學程（IPCS）"}
               </p>
               <p className="text-gray-500">
-                International Program in Computer Science
+                {language === "en"
+                  ? ""
+                  : "International Program in Computer Science"}
               </p>
             </div>
             <ul className="space-y-2">
               <li className="flex items-start gap-2">
                 <span>📍</span>
                 <span>
-                  43301 臺中市沙鹿區臺灣大道七段 200 號
-                  <span className="block text-gray-500">
-                    No. 200, Sec. 7, Taiwan Boulevard, Shalu Dist., Taichung
-                    City 433, Taiwan
-                  </span>
+                  {language === "en"
+                    ? "No. 200, Sec. 7, Taiwan Boulevard, Shalu Dist., Taichung City 43301, Taiwan"
+                    : "43301 臺中市沙鹿區臺灣大道七段 200 號"}
+                  {language === "zh" && (
+                    <span className="block text-gray-500">
+                      No. 200, Sec. 7, Taiwan Boulevard, Shalu Dist., Taichung
+                      City 43301, Taiwan
+                    </span>
+                  )}
                 </span>
               </li>
               <li className="flex items-center gap-2">
@@ -115,14 +137,16 @@ export default function ContactPage() {
         <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
           <h2 className="text-xl font-bold text-gray-800 flex items-center gap-3">
             <span className="text-2xl">📸</span>
-            IPCS 學程歡迎你
+            {language === "en" ? "Welcome to IPCS" : "IPCS 學程歡迎你"}
           </h2>
-          <p className="text-sm text-gray-500 ml-11">Welcome to IPCS</p>
+          <p className="text-sm text-gray-500 ml-11">
+            {language === "en" ? "" : "Welcome to IPCS"}
+          </p>
         </div>
         <div className="px-6 py-5">
           <Image
             src="/images/IPCS_team.jpg"
-            alt="IPCS Team"
+            alt={language === "en" ? "IPCS Team" : "IPCS 學程團隊"}
             width={960}
             height={640}
             className="rounded-lg w-full h-auto"
