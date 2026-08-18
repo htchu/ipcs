@@ -128,7 +128,7 @@ export default function Navbar() {
               onClick={() => setLanguage(language === "zh" ? "en" : "zh")}
               className="hover:text-accent transition font-medium px-2 py-1 rounded hover:bg-white/20"
             >
-              {language === "zh" ? "中文 / EN" : "ZH / English"}
+              {language === "zh" ? "English" : "中文"}
             </button>
             <Link href="/contact" className="hover:text-accent transition">
               聯絡我們 Contact
