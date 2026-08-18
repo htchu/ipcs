@@ -1,11 +1,7 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+"use client";
 
-export const metadata: Metadata = {
-  title: "獎助學金 Scholarship | IPCS",
-  description:
-    "Scholarship information for the International Program in Computer Science at Providence University.",
-};
+import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 /* ── data ── */
 
@@ -105,19 +101,28 @@ const semesters: Scholarship["semester"][] = ["both", "fall", "spring"];
 /* ── component ── */
 
 export default function ScholarshipPage() {
+  const { language } = useLanguage();
+  const t = (zh: string, en: string) => language === "en" ? en : zh;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-primary mb-2">獎助學金</h1>
-      <p className="text-lg text-gray-500 mb-10">Scholarship</p>
+      <h1 className="text-3xl font-bold text-primary mb-2">
+        {t("獎助學金", "Scholarship")}
+      </h1>
+      <p className="text-lg text-gray-500 mb-10">
+        {language === "en" ? "" : "Scholarship"}
+      </p>
 
       {/* ── How to Apply ── */}
       <section className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden mb-10">
         <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
           <h2 className="text-xl font-bold text-gray-800 flex items-center gap-3">
             <span className="text-2xl">📋</span>
-            申請方式
+            {language === "en" ? "How to Apply" : "申請方式"}
           </h2>
-          <p className="text-sm text-gray-500 ml-11">How to Apply</p>
+          <p className="text-sm text-gray-500 ml-11">
+            {language === "en" ? "" : "How to Apply"}
+          </p>
         </div>
 
         <div className="px-6 py-5 space-y-4">

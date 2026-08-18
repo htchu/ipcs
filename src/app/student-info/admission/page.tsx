@@ -1,11 +1,7 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+"use client";
 
-export const metadata: Metadata = {
-  title: "入學申請 Admission | IPCS",
-  description:
-    "Admission pathways for the International Program in Computer Science at Providence University.",
-};
+import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 /* ── data ── */
 
@@ -89,10 +85,17 @@ const pathways: {
 /* ── component ── */
 
 export default function AdmissionPage() {
+  const { language } = useLanguage();
+  const t = (zh: string, en: string) => language === "en" ? en : zh;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-primary mb-2">入學申請</h1>
-      <p className="text-lg text-gray-500 mb-10">Admission</p>
+      <h1 className="text-3xl font-bold text-primary mb-2">
+        {t("入學申請", "Admission")}
+      </h1>
+      <p className="text-lg text-gray-500 mb-10">
+        {language === "en" ? "" : "Admission"}
+      </p>
 
       <div className="space-y-10">
         {pathways.map((p) => (
@@ -104,9 +107,11 @@ export default function AdmissionPage() {
             <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
               <h2 className="text-xl font-bold text-gray-800 flex items-center gap-3">
                 <span className="text-2xl">{p.icon}</span>
-                {p.zh}
+                {language === "en" ? p.en : p.zh}
               </h2>
-              <p className="text-sm text-gray-500 ml-11">{p.en}</p>
+              <p className="text-sm text-gray-500 ml-11">
+                {language === "en" ? "" : p.en}
+              </p>
             </div>
 
             {/* Body */}

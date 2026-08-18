@@ -1,10 +1,6 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "課程資訊 Curriculum | IPCS",
-  description:
-    "Curriculum information for the International Program in Computer Science at Providence University.",
-};
+import { useLanguage } from "@/context/LanguageContext";
 
 /* ── data ── */
 
@@ -180,6 +176,9 @@ function CourseTable({ courses }: { courses: Course[] }) {
 }
 
 export default function CurriculumPage() {
+  const { language } = useLanguage();
+  const t = (zh: string, en: string) => language === "en" ? en : zh;
+
   const totalRequired = required.reduce(
     (sum, g) => sum + g.courses.reduce((s, c) => s + c.credits, 0),
     0
@@ -187,18 +186,28 @@ export default function CurriculumPage() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-primary mb-2">課程資訊</h1>
-      <p className="text-lg text-gray-500 mb-4">Curriculum</p>
+      <h1 className="text-3xl font-bold text-primary mb-2">
+        {t("課程資訊", "Curriculum")}
+      </h1>
+      <p className="text-lg text-gray-500 mb-4">
+        {language === "en" ? "" : "Curriculum"}
+      </p>
 
       {/* Graduation summary */}
       <div className="bg-primary/5 border border-primary/20 rounded-lg p-5 mb-10">
         <p className="text-gray-800 font-medium">
-          畢業總學分要求：<span className="text-primary font-bold">128 學分</span>
+          {language === "en" ? (
+            <>Total credits required for graduation: <span className="text-primary font-bold">128 credits</span></>
+          ) : (
+            <>畢業總學分要求：<span className="text-primary font-bold">128 學分</span></>
+          )}
         </p>
-        <p className="text-sm text-gray-500">
-          Total credits required for graduation:{" "}
-          <span className="font-semibold">128 credits</span>
-        </p>
+        {language === "zh" && (
+          <p className="text-sm text-gray-500">
+            Total credits required for graduation:{" "}
+            <span className="font-semibold">128 credits</span>
+          </p>
+        )}
       </div>
 
       {/* Required courses */}

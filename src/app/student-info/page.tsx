@@ -1,13 +1,12 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+"use client";
 
-export const metadata: Metadata = {
-  title: "學生資訊 Student Info | IPCS",
-  description:
-    "Student information for the International Program in Computer Science at Providence University.",
-};
+import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function StudentInfoPage() {
+  const { language } = useLanguage();
+  const t = (zh: string, en: string) => language === "en" ? en : zh;
+
   const info = [
     {
       icon: "📚",
@@ -37,8 +36,12 @@ export default function StudentInfoPage() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-primary mb-2">學生資訊</h1>
-      <p className="text-lg text-gray-500 mb-10">Student Information</p>
+      <h1 className="text-3xl font-bold text-primary mb-2">
+        {t("學生資訊", "Student Information")}
+      </h1>
+      <p className="text-lg text-gray-500 mb-10">
+        {language === "en" ? "" : "Student Information"}
+      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {info.map((item) => (
@@ -50,11 +53,17 @@ export default function StudentInfoPage() {
             <div className="p-6">
               <div className="text-4xl mb-3">{item.icon}</div>
               <h2 className="text-xl font-bold text-gray-800 group-hover:text-primary transition mb-1">
-                {item.title}
+                {language === "en" ? item.titleEn : item.title}
               </h2>
-              <p className="text-sm text-gray-500 mb-3">{item.titleEn}</p>
-              <p className="text-gray-600 text-sm mb-2">{item.description}</p>
-              <p className="text-xs text-gray-500">{item.descriptionEn}</p>
+              <p className="text-sm text-gray-500 mb-3">
+                {language === "en" ? "" : item.titleEn}
+              </p>
+              <p className="text-gray-600 text-sm mb-2">
+                {language === "en" ? item.descriptionEn : item.description}
+              </p>
+              {language === "zh" && (
+                <p className="text-xs text-gray-500">{item.descriptionEn}</p>
+              )}
             </div>
           </Link>
         ))}
