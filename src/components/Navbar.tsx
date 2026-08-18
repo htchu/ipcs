@@ -4,83 +4,94 @@ import Link from "next/link";
 import { useState } from "react";
 
 const menuItems = [
-  {
-    label: "關於學程",
-    labelEn: "About IPCS",
-    href: "/about",
-    children: [
-      { label: "簡介", labelEn: "Introduction", href: "/about" },
-      {
-        label: "教育目標及核心能力",
-        labelEn: "Educational Objectives",
-        href: "/about/objectives",
-      },
-    ],
-  },
-  {
-    label: "學程師資",
-    labelEn: "Faculty",
-    href: "/faculty",
-    children: [
-      {
-        label: "學程主任",
-        labelEn: "Program Director",
-        href: "/faculty/director",
-      },
-      {
-        label: "專任師資",
-        labelEn: "Full-Time Faculty",
-        href: "/faculty/full-time",
-      },
-      {
-        label: "兼任師資",
-        labelEn: "Adjunct Faculty",
-        href: "/faculty/adjunct",
-      },
-    ],
-  },
-  {
-    label: "學生資訊",
-    labelEn: "Student Info",
-    href: "/student-info",
-    children: [
-      {
-        label: "課程資訊",
-        labelEn: "Curriculum",
-        href: "/student-info/curriculum",
-      },
-      {
-        label: "入學申請",
-        labelEn: "Admission",
-        href: "/student-info/admission",
-      },
-      {
-        label: "獎助學金",
-        labelEn: "Scholarship",
-        href: "/student-info/scholarship",
-      },
-    ],
-  },
-  {
-    label: "表單下載",
-    labelEn: "Forms",
-    href: "/forms",
-  },
-  {
-    label: "法令規章",
-    labelEn: "Regulations",
-    href: "/regulations",
-  },
-  {
-    label: "畢業專題",
-    labelEn: "Capstone Projects",
-    href: "/projects",
-  },
-  {
-    label: "教育認證",
-    labelEn: "IEET Accreditation",
-    href: "/accreditation",
-  },
+  // Row 1
+  [
+    {
+      label: "最新消息",
+      labelEn: "News",
+      href: "/news",
+    },
+    {
+      label: "關於學程",
+      labelEn: "About IPCS",
+      href: "/about",
+      children: [
+        { label: "簡介", labelEn: "Introduction", href: "/about" },
+        {
+          label: "學程師資",
+          labelEn: "Faculty",
+          href: "/faculty",
+          children: [
+            {
+              label: "學程主任",
+              labelEn: "Program Director",
+              href: "/faculty/director",
+            },
+            {
+              label: "專任師資",
+              labelEn: "Full-Time Faculty",
+              href: "/faculty/full-time",
+            },
+            {
+              label: "兼任師資",
+              labelEn: "Adjunct Faculty",
+              href: "/faculty/adjunct",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      label: "入學資訊",
+      labelEn: "Admission",
+      href: "/student-info/admission",
+    },
+    {
+      label: "課程資訊",
+      labelEn: "Curriculum",
+      href: "/student-info/curriculum",
+    },
+    {
+      label: "資訊教育認證 (CAC)",
+      labelEn: "CAC Accreditation",
+      href: "/accreditation",
+      children: [
+        {
+          label: "教育目標及核心能力",
+          labelEn: "Educational Objectives",
+          href: "/about/objectives",
+        },
+      ],
+    },
+  ],
+  // Row 2
+  [
+    {
+      label: "系務規章",
+      labelEn: "Regulations",
+      href: "/regulations",
+    },
+    {
+      label: "獎助學金",
+      labelEn: "Scholarship",
+      href: "/student-info/scholarship",
+    },
+    {
+      label: "證照資訊",
+      labelEn: "Certificates",
+      href: "/certificates",
+    },
+    {
+      label: "畢業專題",
+      labelEn: "Capstone Projects",
+      href: "/projects",
+    },
+    {
+      label: "系友專區",
+      labelEn: "Alumni",
+      href: "/alumni",
+    },
+  ],
 ];
 
 export default function Navbar() {
@@ -137,7 +148,7 @@ export default function Navbar() {
 
           {/* Desktop menu */}
           <nav className="hidden lg:flex items-center gap-1">
-            {menuItems.map((item) => (
+            {menuItems.flat().map((item) => (
               <div key={item.href} className="nav-item relative group">
                 <Link
                   href={item.href}
@@ -166,18 +177,37 @@ export default function Navbar() {
                   )}
                 </Link>
                 {item.children && (
-                  <div className="dropdown-menu hidden absolute top-full left-0 bg-white shadow-lg rounded-md py-1 min-w-[200px] border border-gray-100">
+                  <div className="dropdown-menu hidden group-hover:block absolute top-full left-0 bg-white shadow-lg rounded-md py-1 min-w-[200px] border border-gray-100 z-10">
                     {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className="block px-4 py-2 text-sm text-gray-600 hover:bg-primary hover:text-white transition"
-                      >
-                        {child.label}
-                        <span className="block text-xs opacity-70">
-                          {child.labelEn}
-                        </span>
-                      </Link>
+                      <div key={child.href} className="relative group/child">
+                        <Link
+                          href={child.href}
+                          className="block px-4 py-2 text-sm text-gray-600 hover:bg-primary hover:text-white transition"
+                        >
+                          <span>
+                            {child.label}
+                            <span className="block text-xs opacity-70">
+                              {child.labelEn}
+                            </span>
+                          </span>
+                        </Link>
+                        {child.children && (
+                          <div className="submenu hidden group-hover/child:block absolute left-full top-0 bg-white shadow-lg rounded-md py-1 min-w-[200px] border border-gray-100">
+                            {child.children.map((subchild) => (
+                              <Link
+                                key={subchild.href}
+                                href={subchild.href}
+                                className="block px-4 py-2 text-sm text-gray-600 hover:bg-primary hover:text-white transition"
+                              >
+                                {subchild.label}
+                                <span className="block text-xs opacity-70">
+                                  {subchild.labelEn}
+                                </span>
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     ))}
                   </div>
                 )}
@@ -219,7 +249,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="lg:hidden border-t bg-white">
-          {menuItems.map((item) => (
+          {menuItems.flat().map((item) => (
             <div key={item.href} className="border-b border-gray-100">
               <button
                 className="w-full px-4 py-3 text-left text-sm font-medium text-gray-700 flex justify-between items-center"
@@ -254,17 +284,35 @@ export default function Navbar() {
               {item.children && openSub === item.href && (
                 <div className="bg-gray-50">
                   {item.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className="block px-8 py-2 text-sm text-gray-600 hover:text-primary"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {child.label}{" "}
-                      <span className="text-xs text-gray-400">
-                        {child.labelEn}
-                      </span>
-                    </Link>
+                    <div key={child.href}>
+                      <Link
+                        href={child.href}
+                        className="block px-8 py-2 text-sm text-gray-600 hover:text-primary"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {child.label}{" "}
+                        <span className="text-xs text-gray-400">
+                          {child.labelEn}
+                        </span>
+                      </Link>
+                      {child.children && (
+                        <div className="bg-gray-100">
+                          {child.children.map((subchild) => (
+                            <Link
+                              key={subchild.href}
+                              href={subchild.href}
+                              className="block px-12 py-2 text-sm text-gray-600 hover:text-primary"
+                              onClick={() => setMobileOpen(false)}
+                            >
+                              {subchild.label}{" "}
+                              <span className="text-xs text-gray-400">
+                                {subchild.labelEn}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
               )}
