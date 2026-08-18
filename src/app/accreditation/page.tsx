@@ -1,17 +1,20 @@
-import type { Metadata } from "next";
-import ObjectivesContent from "@/components/ObjectivesContent";
+"use client";
 
-export const metadata: Metadata = {
-  title: "教育認證 IEET Accreditation | IPCS",
-  description:
-    "IEET Accreditation - Educational Objectives and Core Competencies of International Program in Computer Science.",
-};
+import ObjectivesContent from "@/components/ObjectivesContent";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function AccreditationPage() {
+  const { language } = useLanguage();
+  const t = (zh: string, en: string) => language === "en" ? en : zh;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-primary mb-2">教育認證</h1>
-      <p className="text-lg text-gray-500 mb-10">IEET Accreditation</p>
+      <h1 className="text-3xl font-bold text-primary mb-2">
+        {t("教育認證", "IEET Accreditation")}
+      </h1>
+      <p className="text-lg text-gray-500 mb-10">
+        {language === "en" ? "" : "IEET Accreditation"}
+      </p>
       <ObjectivesContent />
     </div>
   );

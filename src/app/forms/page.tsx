@@ -1,11 +1,7 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+"use client";
 
-export const metadata: Metadata = {
-  title: "表單下載 Forms | IPCS",
-  description:
-    "Downloadable forms and documents for the International Program in Computer Science at Providence University.",
-};
+import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 /* ── data ── */
 
@@ -31,18 +27,27 @@ const forms: FormItem[] = [
 /* ── component ── */
 
 export default function FormsPage() {
+  const { language } = useLanguage();
+  const t = (zh: string, en: string) => language === "en" ? en : zh;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-primary mb-2">表單下載</h1>
-      <p className="text-lg text-gray-500 mb-10">Forms</p>
+      <h1 className="text-3xl font-bold text-primary mb-2">
+        {t("表單下載", "Download Forms")}
+      </h1>
+      <p className="text-lg text-gray-500 mb-10">
+        {language === "en" ? "" : "Forms"}
+      </p>
 
       <section className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
         <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
           <h2 className="text-xl font-bold text-gray-800 flex items-center gap-3">
             <span className="text-2xl">📄</span>
-            文件下載
+            {language === "en" ? "Downloads" : "文件下載"}
           </h2>
-          <p className="text-sm text-gray-500 ml-11">Downloads</p>
+          <p className="text-sm text-gray-500 ml-11">
+            {language === "en" ? "" : "Downloads"}
+          </p>
         </div>
 
         <div className="px-6 py-5">
@@ -58,10 +63,10 @@ export default function FormsPage() {
                   <span className="shrink-0 text-red-500 text-lg">PDF</span>
                   <span>
                     <span className="text-sm font-medium text-primary group-hover:underline">
-                      {f.en}
+                      {language === "en" ? f.en : f.zh}
                     </span>
                     <span className="block text-xs text-gray-500 mt-0.5">
-                      {f.zh}
+                      {language === "en" ? "" : f.en}
                     </span>
                   </span>
                 </Link>

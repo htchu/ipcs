@@ -1,11 +1,7 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+"use client";
 
-export const metadata: Metadata = {
-  title: "法令規章 Regulations | IPCS",
-  description:
-    "Regulations and bylaws of the International Program in Computer Science at Providence University.",
-};
+import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 /* ── data ── */
 
@@ -81,19 +77,26 @@ const regulations: Regulation[] = [
 /* ── component ── */
 
 export default function RegulationsPage() {
+  const { language } = useLanguage();
+  const t = (zh: string, en: string) => language === "en" ? en : zh;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-primary mb-2">法令規章</h1>
-      <p className="text-lg text-gray-500 mb-10">Regulations</p>
+      <h1 className="text-3xl font-bold text-primary mb-2">
+        {t("法令規章", "Regulations")}
+      </h1>
+      <p className="text-lg text-gray-500 mb-10">
+        {language === "en" ? "" : "Regulations"}
+      </p>
 
       <section className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
         <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
           <h2 className="text-xl font-bold text-gray-800 flex items-center gap-3">
             <span className="text-2xl">📜</span>
-            系務規章
+            {language === "en" ? "Program Bylaws and Regulations" : "系務規章"}
           </h2>
           <p className="text-sm text-gray-500 ml-11">
-            Program Bylaws and Regulations
+            {language === "en" ? "" : "Program Bylaws and Regulations"}
           </p>
         </div>
 
@@ -110,10 +113,10 @@ export default function RegulationsPage() {
                   <span className="shrink-0 text-red-500 text-lg">PDF</span>
                   <span>
                     <span className="text-sm font-medium text-primary group-hover:underline">
-                      {r.zh}
+                      {language === "en" ? r.en : r.zh}
                     </span>
                     <span className="block text-xs text-gray-500 mt-0.5">
-                      {r.en}
+                      {language === "en" ? "" : r.en}
                     </span>
                   </span>
                 </Link>

@@ -1,11 +1,10 @@
+"use client";
+
 import type { Metadata } from "next";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
-export const metadata: Metadata = {
-  title: "畢業專題 Capstone Projects | IPCS",
-  description:
-    "Capstone projects of the International Program in Computer Science at Providence University.",
-};
+/* Note: Metadata moved below component */
 
 /* ── data ── */
 
@@ -72,10 +71,17 @@ const years: AcademicYear[] = [
 /* ── component ── */
 
 export default function ProjectsPage() {
+  const { language } = useLanguage();
+  const t = (zh: string, en: string) => language === "en" ? en : zh;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-primary mb-2">畢業專題</h1>
-      <p className="text-lg text-gray-500 mb-10">Capstone Projects</p>
+      <h1 className="text-3xl font-bold text-primary mb-2">
+        {t("畢業專題", "Capstone Projects")}
+      </h1>
+      <p className="text-lg text-gray-500 mb-10">
+        {language === "en" ? "" : "Capstone Projects"}
+      </p>
 
       <div className="space-y-10">
         {years.map((y) => (
@@ -86,9 +92,11 @@ export default function ProjectsPage() {
             <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
               <h2 className="text-xl font-bold text-gray-800 flex items-center gap-3">
                 <span className="text-2xl">🎓</span>
-                {y.labelZh}
+                {language === "en" ? y.labelEn : y.labelZh}
               </h2>
-              <p className="text-sm text-gray-500 ml-11">{y.labelEn}</p>
+              <p className="text-sm text-gray-500 ml-11">
+                {language === "en" ? "" : y.labelEn}
+              </p>
             </div>
 
             <div className="px-6 py-5">
@@ -121,9 +129,11 @@ export default function ProjectsPage() {
         <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
           <h2 className="text-xl font-bold text-gray-800 flex items-center gap-3">
             <span className="text-2xl">📋</span>
-            評分表範本
+            {language === "en" ? "Rubric Template" : "評分表範本"}
           </h2>
-          <p className="text-sm text-gray-500 ml-11">Rubric Template</p>
+          <p className="text-sm text-gray-500 ml-11">
+            {language === "en" ? "" : "Rubric Template"}
+          </p>
         </div>
 
         <div className="px-6 py-5">
@@ -139,7 +149,7 @@ export default function ProjectsPage() {
                 IPCS Special Project Rubric Template
               </span>
               <span className="block text-xs text-gray-500 mt-0.5">
-                畢業專題評分表範本
+                {language === "en" ? "" : "畢業專題評分表範本"}
               </span>
             </span>
           </Link>
