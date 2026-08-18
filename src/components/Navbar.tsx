@@ -147,19 +147,16 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop menu */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {menuItems.flat().map((item) => (
+          <nav className="hidden lg:flex flex-col gap-0">
+            {menuItems.map((row) => (
+              <div key={`row-${row[0]?.href}`} className="flex items-center gap-1">
+                {row.map((item) => (
               <div key={item.href} className="nav-item relative group">
                 <Link
                   href={item.href}
                   className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md transition flex items-center gap-1"
                 >
-                  <span>
-                    {item.label}
-                    <span className="block text-xs text-gray-400 leading-tight">
-                      {item.labelEn}
-                    </span>
-                  </span>
+                  <span>{item.label} <span className="text-xs text-gray-400">{item.labelEn}</span></span>
                   {item.children && (
                     <svg
                       className="w-3 h-3"
@@ -184,12 +181,7 @@ export default function Navbar() {
                           href={child.href}
                           className="block px-4 py-2 text-sm text-gray-600 hover:bg-primary hover:text-white transition"
                         >
-                          <span>
-                            {child.label}
-                            <span className="block text-xs opacity-70">
-                              {child.labelEn}
-                            </span>
-                          </span>
+                          <span>{child.label} <span className="text-xs opacity-70">{child.labelEn}</span></span>
                         </Link>
                         {child.children && (
                           <div className="submenu hidden group-hover/child:block absolute left-full top-0 bg-white shadow-lg rounded-md py-1 min-w-[200px] border border-gray-100">
@@ -199,10 +191,7 @@ export default function Navbar() {
                                 href={subchild.href}
                                 className="block px-4 py-2 text-sm text-gray-600 hover:bg-primary hover:text-white transition"
                               >
-                                {subchild.label}
-                                <span className="block text-xs opacity-70">
-                                  {subchild.labelEn}
-                                </span>
+                                {subchild.label} <span className="text-xs opacity-70">{subchild.labelEn}</span>
                               </Link>
                             ))}
                           </div>
@@ -211,6 +200,8 @@ export default function Navbar() {
                     ))}
                   </div>
                 )}
+              </div>
+                ))}
               </div>
             ))}
           </nav>
@@ -249,7 +240,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="lg:hidden border-t bg-white">
-          {menuItems.flat().map((item) => (
+          {menuItems.map((row) => row.map((item) => (
             <div key={item.href} className="border-b border-gray-100">
               <button
                 className="w-full px-4 py-3 text-left text-sm font-medium text-gray-700 flex justify-between items-center"
@@ -261,10 +252,7 @@ export default function Navbar() {
                   }
                 }}
               >
-                <span>
-                  {item.label}{" "}
-                  <span className="text-xs text-gray-400">{item.labelEn}</span>
-                </span>
+                <span>{item.label} <span className="text-xs text-gray-400">{item.labelEn}</span></span>
                 {item.children && (
                   <svg
                     className={`w-4 h-4 transition ${openSub === item.href ? "rotate-180" : ""}`}
@@ -290,10 +278,7 @@ export default function Navbar() {
                         className="block px-8 py-2 text-sm text-gray-600 hover:text-primary"
                         onClick={() => setMobileOpen(false)}
                       >
-                        {child.label}{" "}
-                        <span className="text-xs text-gray-400">
-                          {child.labelEn}
-                        </span>
+                        {child.label} <span className="text-xs text-gray-400">{child.labelEn}</span>
                       </Link>
                       {child.children && (
                         <div className="bg-gray-100">
@@ -304,10 +289,7 @@ export default function Navbar() {
                               className="block px-12 py-2 text-sm text-gray-600 hover:text-primary"
                               onClick={() => setMobileOpen(false)}
                             >
-                              {subchild.label}{" "}
-                              <span className="text-xs text-gray-400">
-                                {subchild.labelEn}
-                              </span>
+                              {subchild.label} <span className="text-xs text-gray-400">{subchild.labelEn}</span>
                             </Link>
                           ))}
                         </div>
@@ -317,7 +299,7 @@ export default function Navbar() {
                 </div>
               )}
             </div>
-          ))}
+          )))}
         </div>
       )}
     </header>
