@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const menuItems = [
   // Row 1
@@ -102,6 +103,7 @@ const menuItems = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openSub, setOpenSub] = useState<string | null>(null);
+  const { language, setLanguage } = useLanguage();
 
   return (
     <header className="w-full shadow-md bg-white sticky top-0 z-50">
@@ -121,7 +123,13 @@ export default function Navbar() {
               校首頁
             </a>
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
+            <button
+              onClick={() => setLanguage(language === "zh" ? "en" : "zh")}
+              className="hover:text-accent transition font-medium px-2 py-1 rounded hover:bg-white/20"
+            >
+              {language === "zh" ? "中文 / EN" : "ZH / English"}
+            </button>
             <Link href="/contact" className="hover:text-accent transition">
               聯絡我們 Contact
             </Link>
