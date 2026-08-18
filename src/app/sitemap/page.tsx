@@ -42,19 +42,14 @@ const sections: SitemapSection[] = [
     ],
   },
   {
-    zh: "課程資訊",
-    en: "Curriculum",
-    href: "/curriculum",
-  },
-  {
-    zh: "入學申請",
-    en: "Admission",
-    href: "/admission",
-  },
-  {
-    zh: "獎助學金",
-    en: "Scholarship",
-    href: "/scholarship",
+    zh: "學生資訊",
+    en: "Student Info",
+    href: "/student-info",
+    children: [
+      { zh: "課程資訊", en: "Curriculum", href: "/student-info/curriculum" },
+      { zh: "入學申請", en: "Admission", href: "/student-info/admission" },
+      { zh: "獎助學金", en: "Scholarship", href: "/student-info/scholarship" },
+    ],
   },
   {
     zh: "表單下載",
@@ -72,8 +67,8 @@ const sections: SitemapSection[] = [
     href: "/projects",
   },
   {
-    zh: "資訊教育認證",
-    en: "IEET CAC Accreditation",
+    zh: "教育認證",
+    en: "IEET Accreditation",
     href: "/accreditation",
   },
   {

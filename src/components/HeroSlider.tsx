@@ -58,7 +58,7 @@ export default function HeroSlider() {
           </p>
           <div className="flex justify-center gap-4">
             <a
-              href="/admission"
+              href="/student-info/admission"
               className="bg-accent hover:bg-accent-hover text-primary font-bold px-8 py-3 rounded-lg transition shadow-lg"
             >
               Apply Now 立即申請

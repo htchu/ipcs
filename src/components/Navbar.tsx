@@ -40,19 +40,26 @@ const menuItems = [
     ],
   },
   {
-    label: "課程資訊",
-    labelEn: "Curriculum",
-    href: "/curriculum",
-  },
-  {
-    label: "入學申請",
-    labelEn: "Admission",
-    href: "/admission",
-  },
-  {
-    label: "獎助學金",
-    labelEn: "Scholarship",
-    href: "/scholarship",
+    label: "學生資訊",
+    labelEn: "Student Info",
+    href: "/student-info",
+    children: [
+      {
+        label: "課程資訊",
+        labelEn: "Curriculum",
+        href: "/student-info/curriculum",
+      },
+      {
+        label: "入學申請",
+        labelEn: "Admission",
+        href: "/student-info/admission",
+      },
+      {
+        label: "獎助學金",
+        labelEn: "Scholarship",
+        href: "/student-info/scholarship",
+      },
+    ],
   },
   {
     label: "表單下載",
@@ -70,8 +77,8 @@ const menuItems = [
     href: "/projects",
   },
   {
-    label: "資訊教育認證",
-    labelEn: "IEET CAC Accreditation",
+    label: "教育認證",
+    labelEn: "IEET Accreditation",
     href: "/accreditation",
   },
 ];

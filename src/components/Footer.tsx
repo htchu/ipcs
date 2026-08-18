@@ -37,9 +37,9 @@ export default function Footer() {
             <h3 className="text-accent font-bold text-lg mb-3">快速連結 Quick Links</h3>
             <div className="space-y-1 text-sm text-gray-300">
               <Link href="/about" className="block hover:text-white transition">關於學程 About</Link>
-              <Link href="/admission" className="block hover:text-white transition">入學申請 Admission</Link>
-              <Link href="/scholarship" className="block hover:text-white transition">獎助學金 Scholarship</Link>
-              <Link href="/curriculum" className="block hover:text-white transition">課程資訊 Curriculum</Link>
+              <Link href="/student-info/admission" className="block hover:text-white transition">入學申請 Admission</Link>
+              <Link href="/student-info/scholarship" className="block hover:text-white transition">獎助學金 Scholarship</Link>
+              <Link href="/student-info/curriculum" className="block hover:text-white transition">課程資訊 Curriculum</Link>
               <Link href="/forms" className="block hover:text-white transition">表單下載 Forms</Link>
             </div>
           </div>
