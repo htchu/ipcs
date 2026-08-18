@@ -1,12 +1,8 @@
-import type { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-
-export const metadata: Metadata = {
-  title: "學程主任 Program Director | IPCS",
-  description:
-    "Program Director of the International Program in Computer Science at Providence University.",
-};
+import { useLanguage } from "@/context/LanguageContext";
 
 /* ── data ── */
 
@@ -38,10 +34,17 @@ const director = {
 /* ── component ── */
 
 export default function DirectorPage() {
+  const { language } = useLanguage();
+  const t = (zh: string, en: string) => language === "en" ? en : zh;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-primary mb-2">學程主任</h1>
-      <p className="text-lg text-gray-500 mb-10">Program Director</p>
+      <h1 className="text-3xl font-bold text-primary mb-2">
+        {t("學程主任", "Program Director")}
+      </h1>
+      <p className="text-lg text-gray-500 mb-10">
+        {language === "en" ? "" : "Program Director"}
+      </p>
 
       <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
         {/* Profile header */}
@@ -57,13 +60,17 @@ export default function DirectorPage() {
           </div>
           <div className="p-6 md:pl-0">
             <h2 className="text-2xl font-bold text-gray-800">
-              {director.nameZh}
+              {language === "en" ? director.nameEn : director.nameZh}
             </h2>
-            <p className="text-lg text-gray-500 mb-3">{director.nameEn}</p>
-            <p className="text-sm font-medium text-primary mb-1">
-              {director.titleZh}
+            <p className="text-lg text-gray-500 mb-3">
+              {language === "en" ? "" : director.nameEn}
             </p>
-            <p className="text-xs text-gray-500 mb-5">{director.titleEn}</p>
+            <p className="text-sm font-medium text-primary mb-1">
+              {language === "en" ? director.titleEn : director.titleZh}
+            </p>
+            <p className="text-xs text-gray-500 mb-5">
+              {language === "en" ? "" : director.titleEn}
+            </p>
 
             {/* Contact */}
             <ul className="text-sm text-gray-600 space-y-2">
@@ -97,8 +104,12 @@ export default function DirectorPage() {
 
         {/* Education */}
         <div className="border-t border-gray-200 px-6 py-5">
-          <h3 className="text-lg font-bold text-gray-800 mb-1">學歷</h3>
-          <p className="text-sm text-gray-500 mb-4">Education</p>
+          <h3 className="text-lg font-bold text-gray-800 mb-1">
+            {t("學歷", "Education")}
+          </h3>
+          <p className="text-sm text-gray-500 mb-4">
+            {language === "en" ? "" : "Education"}
+          </p>
           <ul className="space-y-3">
             {director.education.map((edu, i) => (
               <li
@@ -106,11 +117,13 @@ export default function DirectorPage() {
                 className="rounded-md border border-gray-100 px-4 py-3"
               >
                 <span className="text-sm font-medium text-gray-800">
-                  {edu.zh}
+                  {language === "en" ? edu.en : edu.zh}
                 </span>
-                <span className="block text-xs text-gray-500 mt-0.5">
-                  {edu.en}
-                </span>
+                {language === "zh" && (
+                  <span className="block text-xs text-gray-500 mt-0.5">
+                    {edu.en}
+                  </span>
+                )}
               </li>
             ))}
           </ul>
@@ -118,18 +131,24 @@ export default function DirectorPage() {
 
         {/* Research expertise */}
         <div className="border-t border-gray-200 px-6 py-5">
-          <h3 className="text-lg font-bold text-gray-800 mb-1">研究專長</h3>
-          <p className="text-sm text-gray-500 mb-4">Research Expertise</p>
+          <h3 className="text-lg font-bold text-gray-800 mb-1">
+            {t("研究專長", "Research Expertise")}
+          </h3>
+          <p className="text-sm text-gray-500 mb-4">
+            {language === "en" ? "" : "Research Expertise"}
+          </p>
           <div className="flex flex-wrap gap-2">
             {director.expertise.map((item, i) => (
               <span
                 key={i}
                 className="inline-block rounded-full bg-primary/10 text-primary px-4 py-2 text-sm font-medium"
               >
-                {item.zh}
-                <span className="text-xs text-primary/70 ml-1">
-                  {item.en}
-                </span>
+                {language === "en" ? item.en : item.zh}
+                {language === "zh" && (
+                  <span className="text-xs text-primary/70 ml-1">
+                    {item.en}
+                  </span>
+                )}
               </span>
             ))}
           </div>

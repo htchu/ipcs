@@ -1,12 +1,8 @@
-import type { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-
-export const metadata: Metadata = {
-  title: "專任師資 Full-Time Faculty | IPCS",
-  description:
-    "Full-time faculty of the International Program in Computer Science at Providence University.",
-};
+import { useLanguage } from "@/context/LanguageContext";
 
 /* ── data ── */
 
@@ -212,10 +208,17 @@ const faculty: Faculty[] = [
 /* ── component ── */
 
 export default function FullTimeFacultyPage() {
+  const { language } = useLanguage();
+  const t = (zh: string, en: string) => language === "en" ? en : zh;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-primary mb-2">專任師資</h1>
-      <p className="text-lg text-gray-500 mb-10">Full-Time Faculty</p>
+      <h1 className="text-3xl font-bold text-primary mb-2">
+        {t("專任師資", "Full-Time Faculty")}
+      </h1>
+      <p className="text-lg text-gray-500 mb-10">
+        {language === "en" ? "" : "Full-Time Faculty"}
+      </p>
 
       <div className="space-y-8">
         {faculty.map((f) => (
@@ -244,16 +247,22 @@ export default function FullTimeFacultyPage() {
               {/* Info */}
               <div className="p-5 md:pl-0 flex-1">
                 <h2 className="text-xl font-bold text-gray-800">
-                  {f.nameZh}
+                  {language === "en" ? f.nameEn : f.nameZh}
                 </h2>
-                <p className="text-base text-gray-500">{f.nameEn}</p>
-                <p className="text-sm font-medium text-primary mt-1">
-                  {f.titleZh}
+                <p className="text-base text-gray-500">
+                  {language === "en" ? "" : f.nameEn}
                 </p>
-                <p className="text-xs text-gray-500">{f.titleEn}</p>
+                <p className="text-sm font-medium text-primary mt-1">
+                  {language === "en" ? f.titleEn : f.titleZh}
+                </p>
+                <p className="text-xs text-gray-500">
+                  {language === "en" ? "" : f.titleEn}
+                </p>
                 <p className="text-xs text-gray-400 mt-1">
-                  {f.deptZh}
-                  <span className="block">{f.deptEn}</span>
+                  {language === "en" ? f.deptEn : f.deptZh}
+                  {language === "zh" && (
+                    <span className="block">{f.deptEn}</span>
+                  )}
                 </p>
 
                 {/* Contact */}
@@ -289,7 +298,7 @@ export default function FullTimeFacultyPage() {
                 {/* Education */}
                 <div className="mt-4">
                   <h3 className="text-sm font-semibold text-gray-600 mb-2">
-                    學歷 Education
+                    {t("學歷", "Education")} {language === "zh" && "Education"}
                   </h3>
                   <ul className="space-y-1">
                     {f.education.map((edu, i) => (
