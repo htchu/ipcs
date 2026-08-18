@@ -169,7 +169,13 @@ export default function Navbar() {
                   href={item.href}
                   className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md transition flex items-center gap-1"
                 >
-                  <span>{item.label} <span className="text-xs text-gray-400">{item.labelEn}</span></span>
+                  <span>
+                    {language === "en" ? item.labelEn : (
+                      <>
+                        {item.label} <span className="text-xs text-gray-400">{item.labelEn}</span>
+                      </>
+                    )}
+                  </span>
                   {item.children && (
                     <svg
                       className="w-3 h-3"
@@ -194,7 +200,13 @@ export default function Navbar() {
                           href={child.href}
                           className="block px-4 py-2 text-sm text-gray-600 hover:bg-primary hover:text-white transition"
                         >
-                          <span>{child.label} <span className="text-xs opacity-70">{child.labelEn}</span></span>
+                          <span>
+                            {language === "en" ? child.labelEn : (
+                              <>
+                                {child.label} <span className="text-xs opacity-70">{child.labelEn}</span>
+                              </>
+                            )}
+                          </span>
                         </Link>
                         {child.children && (
                           <div className="submenu hidden group-hover/child:block absolute left-full top-0 bg-white shadow-lg rounded-md py-1 min-w-[200px] border border-gray-100">
@@ -204,7 +216,11 @@ export default function Navbar() {
                                 href={subchild.href}
                                 className="block px-4 py-2 text-sm text-gray-600 hover:bg-primary hover:text-white transition"
                               >
-                                {subchild.label} <span className="text-xs opacity-70">{subchild.labelEn}</span>
+                                {language === "en" ? subchild.labelEn : (
+                                  <>
+                                    {subchild.label} <span className="text-xs opacity-70">{subchild.labelEn}</span>
+                                  </>
+                                )}
                               </Link>
                             ))}
                           </div>
@@ -265,7 +281,13 @@ export default function Navbar() {
                   }
                 }}
               >
-                <span>{item.label} <span className="text-xs text-gray-400">{item.labelEn}</span></span>
+                <span>
+                  {language === "en" ? item.labelEn : (
+                    <>
+                      {item.label} <span className="text-xs text-gray-400">{item.labelEn}</span>
+                    </>
+                  )}
+                </span>
                 {item.children && (
                   <svg
                     className={`w-4 h-4 transition ${openSub === item.href ? "rotate-180" : ""}`}
@@ -291,7 +313,11 @@ export default function Navbar() {
                         className="block px-8 py-2 text-sm text-gray-600 hover:text-primary"
                         onClick={() => setMobileOpen(false)}
                       >
-                        {child.label} <span className="text-xs text-gray-400">{child.labelEn}</span>
+                        {language === "en" ? child.labelEn : (
+                          <>
+                            {child.label} <span className="text-xs text-gray-400">{child.labelEn}</span>
+                          </>
+                        )}
                       </Link>
                       {child.children && (
                         <div className="bg-gray-100">
@@ -302,7 +328,11 @@ export default function Navbar() {
                               className="block px-12 py-2 text-sm text-gray-600 hover:text-primary"
                               onClick={() => setMobileOpen(false)}
                             >
-                              {subchild.label} <span className="text-xs text-gray-400">{subchild.labelEn}</span>
+                              {language === "en" ? subchild.labelEn : (
+                                <>
+                                  {subchild.label} <span className="text-xs text-gray-400">{subchild.labelEn}</span>
+                                </>
+                              )}
                             </Link>
                           ))}
                         </div>

@@ -1,21 +1,33 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { language } = useLanguage();
+  const t = (zh: string, en: string) => language === "en" ? en : zh;
+
   return (
     <footer className="bg-primary text-white mt-auto">
       <div className="max-w-7xl mx-auto px-4 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Contact */}
           <div>
-            <h3 className="text-accent font-bold text-lg mb-3">聯絡資訊 Contact</h3>
+            <h3 className="text-accent font-bold text-lg mb-3">
+              {language === "en" ? "Contact Information" : "聯絡資訊 Contact"}
+            </h3>
             <div className="space-y-2 text-sm text-gray-300">
               <p className="flex items-start gap-2">
                 <svg className="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                43301 台中市沙鹿區台灣大道七段200號<br />
-                No.200, Sec.7, Taiwan Boulevard, Shalu Dist., Taichung City 43301, Taiwan
+                {language === "en" ? (
+                  <>No.200, Sec.7, Taiwan Boulevard, Shalu Dist., Taichung City 43301, Taiwan</>
+                ) : (
+                  <>43301 台中市沙鹿區台灣大道七段200號<br />
+                  No.200, Sec.7, Taiwan Boulevard, Shalu Dist., Taichung City 43301, Taiwan</>
+                )}
               </p>
               <p className="flex items-center gap-2">
                 <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -34,30 +46,52 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-accent font-bold text-lg mb-3">快速連結 Quick Links</h3>
+            <h3 className="text-accent font-bold text-lg mb-3">
+              {language === "en" ? "Quick Links" : "快速連結 Quick Links"}
+            </h3>
             <div className="space-y-1 text-sm text-gray-300">
-              <Link href="/about" className="block hover:text-white transition">關於學程 About</Link>
-              <Link href="/student-info/admission" className="block hover:text-white transition">入學申請 Admission</Link>
-              <Link href="/student-info/scholarship" className="block hover:text-white transition">獎助學金 Scholarship</Link>
-              <Link href="/student-info/curriculum" className="block hover:text-white transition">課程資訊 Curriculum</Link>
-              <Link href="/forms" className="block hover:text-white transition">表單下載 Forms</Link>
+              <Link href="/about" className="block hover:text-white transition">
+                {language === "en" ? "About IPCS" : "關於學程 About"}
+              </Link>
+              <Link href="/student-info/admission" className="block hover:text-white transition">
+                {language === "en" ? "Admission" : "入學申請 Admission"}
+              </Link>
+              <Link href="/student-info/scholarship" className="block hover:text-white transition">
+                {language === "en" ? "Scholarship" : "獎助學金 Scholarship"}
+              </Link>
+              <Link href="/student-info/curriculum" className="block hover:text-white transition">
+                {language === "en" ? "Curriculum" : "課程資訊 Curriculum"}
+              </Link>
+              <Link href="/forms" className="block hover:text-white transition">
+                {language === "en" ? "Forms" : "表單下載 Forms"}
+              </Link>
             </div>
           </div>
 
           {/* Related Links */}
           <div>
-            <h3 className="text-accent font-bold text-lg mb-3">相關連結 Related Links</h3>
+            <h3 className="text-accent font-bold text-lg mb-3">
+              {language === "en" ? "Related Links" : "相關連結 Related Links"}
+            </h3>
             <div className="space-y-1 text-sm text-gray-300">
-              <a href="https://www.pu.edu.tw/" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition">靜宜大學 Providence University</a>
-              <a href="https://www.csie.pu.edu.tw/" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition">資訊工程學系 CSIE</a>
-              <a href="https://www.csce.pu.edu.tw/" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition">資訊傳播工程學系 CSCE</a>
-              <a href="https://www.csim.pu.edu.tw/" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition">資訊管理學系 CSIM</a>
+              <a href="https://www.pu.edu.tw/" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition">
+                {language === "en" ? "Providence University" : "靜宜大學 Providence University"}
+              </a>
+              <a href="https://www.csie.pu.edu.tw/" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition">
+                {language === "en" ? "CSIE - Computer Science & Eng." : "資訊工程學系 CSIE"}
+              </a>
+              <a href="https://www.csce.pu.edu.tw/" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition">
+                {language === "en" ? "CSCE - Info. & Comm. Eng." : "資訊傳播工程學系 CSCE"}
+              </a>
+              <a href="https://www.csim.pu.edu.tw/" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition">
+                {language === "en" ? "CSIM - Information Management" : "資訊管理學系 CSIM"}
+              </a>
             </div>
           </div>
         </div>
 
         <div className="border-t border-white/20 mt-8 pt-6 text-center text-sm text-gray-400">
-          <p>&copy; {new Date().getFullYear()} 國際資訊學士學位學程 International Program in Computer Science, Providence University. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {t("國際資訊學士學位學程", "International Program in Computer Science")}, Providence University. All rights reserved.</p>
         </div>
       </div>
     </footer>
